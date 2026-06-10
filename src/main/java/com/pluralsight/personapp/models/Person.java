@@ -1,24 +1,31 @@
 package com.pluralsight.personapp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table( name = "person" )
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String Name;
+    private String name;
     private String email;
+    private int age;
 
     public Person() {
     }
 
     public Person(String name, String email) {
-        Name = name;
+        this.name = name;
         this.email = email;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Long getId() {
@@ -26,7 +33,7 @@ public class Person {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getEmail() {
@@ -34,10 +41,11 @@ public class Person {
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 }
+
